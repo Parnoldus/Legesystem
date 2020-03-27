@@ -8,11 +8,15 @@ public class BlaaResept extends Resept {
   }
 
   public String farge() {
-    String str = "Dette er en blaa resept!";
+    String str = "blaa";
     return str;
   }
 
-  public double prisAaBetale() {
-    return pris;
+  @Override
+  public double prisAaBetale() { //bruker klassemetoden til superklassen for å hente legemiddelet, for saa aa bruke hentPris()-metoden til klassen Legemiddel for hente prisen.
+    double legemiddelPris = hentLegemiddel().hentPris();
+    final double RABATT = 0.75;
+    double redusertPris = (legemiddelPris - (legemiddelPris * RABATT));
+    return redusertPris;
   }
 }
